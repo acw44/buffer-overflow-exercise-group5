@@ -5,7 +5,7 @@ Buffer Overflow Code Review
 
 This is a group exercises.
 Each student:
-Download the Code to Review and Code Review Template contained in the zip file. Download zip file.
+Download the Code (cpp file) to Review and Code Review Template (doc).
 Reviews the code looking for coding issue and document using the Code Review Document
 - Poor C++ programming standards
 - Security issues or possible execution issues. 
