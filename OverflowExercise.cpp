@@ -1,19 +1,24 @@
+// Group 5 Buffer Overflow Exercise
 #include <iostream>
+#include <string>
 #include <cstring>
-#include <cstdlib>
 
-void secret_function() {
-    std::cout << "\n[!] Success: Code execution redirected to secret_function()!\n";
-}
+// removed secret_function to prevent exploitation
+void function1(const std::string& input) {
+    char buffer[16] = {0};
+    std::cout << "[+] Address of buffer: " << static_cast<const void*>(buffer) << "\n";
+    std::cout << "[+] Input length: " << input.size() << "\n";
 
+    // checking if input is too long
+    if (input.size() >= sizeof(buffer)) {
+        std::cout << "[-] Input is too long for the buffer. Refusing to copy.\n";
+        return;
+    }
 
-void function1(char* input) {
-    char buffer[16]; 
-    std::cout << "[+] Address of buffer:          " << (void*)buffer << "\n";
-    std::cout << "[+] Address of secret_function: " << (void*)&secret_function << "\n";
-
-    strcpy(buffer, input);
-    secret_function();
+    // copying input safely
+    std::strncpy(buffer, input.c_str(), sizeof(buffer) - 1);
+    buffer[sizeof(buffer) - 1] = '\0';
+    std::cout << "[+] Copied input: " << buffer << "\n";
 }
 
 int main(int argc, char* argv[]) {
@@ -28,4 +33,3 @@ int main(int argc, char* argv[]) {
 
     return 0;
 }
-
