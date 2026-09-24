@@ -1,4 +1,6 @@
 // Group 5 Buffer Overflow Exercise
+// i used Github Copilot for C++ help bc i only know js in recent years - andrew
+
 #include <iostream>
 #include <string>
 #include <cstring>
